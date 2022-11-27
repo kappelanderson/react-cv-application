@@ -34,17 +34,11 @@ handleDelete(e){
         {this.props.experiences.map(element => {
             return(
             <div key={element.id}>
-                <label>Position</label>
-                <input id={element.id} value={element.position} className={'position'} key={'position'} onChange={this.handleChange}/>
-                <label>Company</label>
-                <input id={element.id} value={element.company} className={'company'} onChange={this.handleChange}/>
-                <label>City</label>
-                <input id={element.id} value={element.city} className={'city'} onChange={this.handleChange}/>
-                <label>From</label>
-                <input id={element.id} value={element.from} className={'from'} onChange={this.handleChange}/>
-                <label>To</label>
-
-                <input id={element.id} value={element.to} className={'to'} onChange={this.handleChange}/>
+                <input id={element.id} value={element.position} className={'position'} key={'position'} onChange={this.handleChange} placeholder={'Position'}/>
+                <input id={element.id} value={element.company} className={'company'} onChange={this.handleChange} placeholder={'Company'}/>
+                <input id={element.id} value={element.city} className={'city'} onChange={this.handleChange} placeholder={'City'}/>
+                <input id={element.id} value={element.from} className={'from'} onChange={this.handleChange} placeholder={'From'}/>
+                <input id={element.id} value={element.to} className={'to'} onChange={this.handleChange} placeholder={'To'}/>
                 <button id={element.id} onClick={this.handleDelete}>Delete</button>
             </div>)
         })}

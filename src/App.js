@@ -3,6 +3,7 @@ import Education from "./Education";
 import Experience from "./Experience";
 import PersonalDetails from "./PersonalDetails";
 import Skills from "./Skills";
+import './style.css'
 
 class App extends Component {
   constructor(props){
@@ -16,9 +17,9 @@ class App extends Component {
       location: '',
       description: '',
         },
-    skills: [{id: 0, name: 'HTML'},],
-    experience: [{id: 0, position: 'Software Engineer', company: 'UpWork', city: 'Juiz de Fora', from: '23/10/2021', to: '12/07/2022'}],
-    education: [ {id: 0, university: 'Harvard', city: 'Cambridge', degree: 'graduate', subject: 'tech', from: '25/02/2020', to: '20/08/2022'}]
+    skills: [],
+    experience: [],
+    education: [ ]
   }
   this.getPersonal = this.getPersonal.bind(this)
   this.skillsChange = this.skillsChange.bind(this)
@@ -132,49 +133,66 @@ educationDelete(id){
 
     return(
     <>
-    <h1>CV Application</h1>
-      <div>
-          <PersonalDetails getPersonal={this.getPersonal} state={this.state}/>
-          <h2>Experience:</h2>
-          <Experience experiences={this.state.experience} experienceChange={this.experienceChange} experienceCreate={this.experienceCreate} experienceDelete={this.experienceDelete}/>
-          <h2>Education</h2>
-          <Education education={this.state.education} educationChange={this.educationChange} educationCreate={this.educationCreate} educationDelete={this.educationDelete}/>
-          <h2>Skills</h2>
-          <Skills skills={this.state.skills} skillsChange={this.skillsChange} skillsCreate={this.skillsCreate} skillsDelete={this.skillsDelete}/>
-      </div>
+    <header>
+        <h1>CV Application</h1>
+    </header>
+      <main>
+          <div className="inputcontainer">
+              <PersonalDetails getPersonal={this.getPersonal} state={this.state}/>
+              <h2>Experience:</h2>
+              <Experience experiences={this.state.experience} experienceChange={this.experienceChange} experienceCreate={this.experienceCreate} experienceDelete={this.experienceDelete}/>
+              <h2>Education</h2>
+              <Education education={this.state.education} educationChange={this.educationChange} educationCreate={this.educationCreate} educationDelete={this.educationDelete}/>
+              <h2>Skills</h2>
+              <Skills skills={this.state.skills} skillsChange={this.skillsChange} skillsCreate={this.skillsCreate} skillsDelete={this.skillsDelete}/>
+          </div>
+          <div className="outputcontainer">
+              <div className="outputheader">
+                <div className="left">
+                    <h2>{this.state.personal.name}</h2>
+                    <p>{this.state.personal.title}</p>
+                </div>
+                <div className="right">
+                  <li>{this.state.personal.phone}</li>
+                  <li>{this.state.personal.email}</li>
+                  <li>{this.state.personal.location}</li>
 
-      <div>
-        <h2>Name: {this.state.personal.name}</h2>
-        <p>Email: {this.state.personal.email}</p>
-        <p>Title: {this.state.personal.title}</p>
-        <p>Phone: {this.state.personal.phone}</p>
-        <p>Location: {this.state.personal.location}</p>
-        <p>Description: {this.state.personal.description}</p>
-      </div>
-          <h2>Experience</h2>
-          {this.state.experience.map(element => <div><p>{element.position}</p>
-          <p>{element.company}</p>
-          <p>{element.city}</p>
-          <p>{element.from}</p>
-          <p>{element.to}</p>
-          </div>)}
-      <div>
-          <h2>Education</h2>
-          {this.state.education.map(element =>
-            <div>
-              <li>{element.university}</li>
-              <li>{element.city}</li>
-              <li>{element.degree}</li>
-              <li>{element.subject}</li>
-              <li>{element.from}</li>
-              <li>{element.to}</li>
-            </div>
-          )}
-      </div>
-      <div>
-          <h2>Skills:</h2>
-          {this.state.skills.map(element => <div key={element.id}> <li>{element.name}</li> </div>)}
-      </div>
+                </div>
+              </div>
+              <div className="outputmain">
+                <h2>Description</h2>
+                <hr />
+                <p>{this.state.personal.description}</p>
+                <h2>Experience</h2>
+                <hr />
+                {this.state.experience.map(element => 
+                <div className="card">
+                  <p>{element.from} - {element.to}</p>
+                  <p>{element.position}</p>
+                  <p>{element.company}</p>
+                  <p>{element.city}</p>
+                </div>)}
+                <h2>Education</h2>
+                <hr />
+                {this.state.education.map(element => 
+                <div className="card">
+                  <p>{element.from} - {element.to}</p>
+                  <p>{element.university}, {element.city}</p>
+                  <p>Degree: {element.degree}</p>
+                  <p>Subject: {element.subject}</p>
+                </div>)}
+                <h2>Skills</h2>
+                <hr />
+                {this.state.skills.map(element => <div class="skill" key={element.id}> {element.name} </div>)}
+              </div>
+          </div>
+      </main>
+
+
+
+
+
+
       
     </>
     )

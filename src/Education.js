@@ -34,18 +34,12 @@ handleDelete(e){
         {this.props.education.map(element => {
             return(
             <div key={element.id}>
-                <label>university: </label>
-                <input id={element.id} value={element.university} className={'university'} key={'university'} onChange={this.handleChange}/>
-                <label>City: </label>
-                <input id={element.id} value={element.city} className={'city'} onChange={this.handleChange}/>
-                <label>Degree: </label>
-                <input id={element.id} value={element.degree} className={'degree'} onChange={this.handleChange}/>
-                <label>Subject: </label>
-                <input id={element.id} value={element.subject} className={'subject'} onChange={this.handleChange}/>
-                <label>From: </label>
-                <input id={element.id} value={element.from} className={'from'} onChange={this.handleChange}/>
-                <label>To: </label>
-                <input id={element.id} value={element.to} className={'to'} onChange={this.handleChange}/>
+                <input id={element.id} value={element.university} className={'university'} key={'university'} onChange={this.handleChange} placeholder={'University'}/>
+                <input id={element.id} value={element.city} className={'city'} onChange={this.handleChange} placeholder={'City'}/>
+                <input id={element.id} value={element.degree} className={'degree'} onChange={this.handleChange} placeholder={'Degree'}/>
+                <input id={element.id} value={element.subject} className={'subject'} onChange={this.handleChange} placeholder={'Subject'}/>
+                <input id={element.id} value={element.from} className={'from'} onChange={this.handleChange} placeholder={'From'}/>
+                <input id={element.id} value={element.to} className={'to'} onChange={this.handleChange} placeholder={'To'}/>
                 <button id={element.id} onClick={this.handleDelete}>Delete</button>
             </div>)
         })}
