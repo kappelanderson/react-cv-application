@@ -9,3 +9,6 @@ Used react features:
 - Props
 - Use Effect
 - Use State
+
+# Image from the Project
+![image](https://user-images.githubusercontent.com/96890436/211419242-16490adf-0214-44eb-ace9-def885c485d7.png)
